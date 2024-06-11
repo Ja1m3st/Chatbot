@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chatbot</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Chatbot</h1>
+    <form id="chat-form" class="mb-4">
+        <div class="form-group">
+            <label for="userQuestion">Pregunta:</label>
+            <input type="text" class="form-control" id="userQuestion" name="userQuestion" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+    <h2>Respuesta</h2>
+    <p id="chat-response" class="alert alert-info"></p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('chat-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const userQuestion = document.getElementById('userQuestion').value;
+
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userQuestion)
+            }).then(response => response.text()).then(data => {
+                document.getElementById('chat-response').innerText = data;
+                document.getElementById('userQuestion').value = '';
+            });
+        });
+    });
+</script>
+</body>
+</html>

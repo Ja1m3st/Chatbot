@@ -5,6 +5,9 @@
 ## 🚀 Introduction
 - My Chatbot Project is designed to provide a simple and efficient chatbot solution that can be easily integrated into various applications. It utilizes MongoDB as a backend database for storing questions and answers, and provides a RESTful API for interacting with the chatbot.
 
+[!NOTE]
+Este es un bloque de nota importante. Presta atención a esta información.
+
 ## 📋 Table of Contents
 - Introduction
 - Features
